@@ -1,0 +1,15 @@
+    "hyprland/workspaces": {
+        // "disable-scroll": false,
+        // "rotate": ${r_deg},
+        "all-outputs": true,
+        "active-only": false,
+        "on-click": "activate",
+        "persistent-workspaces": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": ""
+        },
+    },
+
