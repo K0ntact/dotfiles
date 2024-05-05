@@ -4,9 +4,10 @@
 // sourced from header module //
 
     "layer": "top",
+    // "output": "eDP-1",
     "position": "top",
     "mod": "dock",
-    "height": 29,
+    "height": 28,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
@@ -16,7 +17,7 @@
 
 	"modules-left": ["custom/padd","custom/l_end","hyprland/workspaces","hyprland/window","custom/r_end","custom/padd"],
 	"modules-center": ["custom/padd","custom/l_end","idle_inhibitor","clock","custom/r_end","custom/padd"],
-	"modules-right": ["custom/padd","custom/l_end","cpu","memory","network","bluetooth","custom/updates","custom/r_end","custom/l_end","tray","battery","custom/r_end","custom/l_end","backlight","pulseaudio","pulseaudio#microphone","custom/cliphist","custom/power","custom/r_end","custom/padd"],
+	"modules-right": ["custom/padd","custom/l_end","custom/cpuinfo","memory","custom/gpuinfo","network","bluetooth","custom/updates","custom/r_end","custom/l_end","tray","battery","custom/r_end","custom/l_end","backlight","pulseaudio","pulseaudio#microphone","custom/cliphist","custom/power","custom/r_end","custom/padd"],
 
 
 // sourced from modules based on config.ctl //
@@ -41,15 +42,15 @@
         "rotate": 0,
         "separate-outputs": true,
         "rewrite": {
-            "kontact@nitro5:(.*)": "$1 ",
-            "(.*) — Mozilla Firefox": "$1 󰈹",
-            "(.*)Mozilla Firefox": "Firefox 󰈹",
-            "(.*) - Visual Studio Code": "$1 󰨞",
-            "(.*)Visual Studio Code": "Code 󰨞",
-            "(.*)Spotify": "Spotify 󰓇",
-            "(.*)Steam": "Steam 󰓓",
-            "(.*) - Microsoft​ Edge": "$1 󰇩",
-            "(.*)Microsoft Edge": "Microsoft Edge 󰇩",
+            "kontact@nitro5:(.*)": "$1  ",
+            "(.*) — Mozilla Firefox": "$1 󰈹 ",
+            "(.*)Mozilla Firefox": "Firefox 󰈹 ",
+            "(.*) - Visual Studio Code": "$1 󰨞 ",
+            "(.*)Visual Studio Code": "Code 󰨞 ",
+            "(.*)Spotify": "Spotify 󰓇 ",
+            "(.*)Steam": "Steam 󰓓 ",
+            "(.*) - Microsoft​ Edge": "$1 󰇩 ",
+            "(.*)Microsoft Edge": "Microsoft Edge 󰇩 ",
         },
         "max-length": 100
     },
@@ -88,12 +89,14 @@
         }
     },
 
-    "cpu": {
-        "interval": 10,
-        "format": "󰍛 {usage}%",
+    "custom/cpuinfo": {
+        "exec": " /home/kontact/.config/hyprdots/scripts/cpuinfo.sh",
+        "return-type": "json",
+        "format": "{}",
         "rotate": 0,
-        "format-alt": "{icon0}{icon1}{icon2}{icon3}",
-        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+        "interval": 5, // once every 5 seconds
+        "tooltip": true,
+        "max-length": 1000
     },
 
     "memory": {
@@ -112,6 +115,47 @@
         "max-length": 10,
         "tooltip": true,
         "tooltip-format": "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB"
+    },
+
+    "custom/gpuinfo": {
+        "exec": " /home/kontact/.config/hyprdots/scripts/gpuinfo.sh",
+        "return-type": "json",
+        "format": "{}",
+        "rotate": 0,
+        "interval": 5, // once every 5 seconds
+        "tooltip": true,
+        "max-length": 1000,
+        "on-click": "/home/kontact/.config/hyprdots/scripts/gpuinfo.sh --toggle",
+    },
+
+    "custom/gpuinfo#nvidia": {
+        "exec": " /home/kontact/.config/hyprdots/scripts/gpuinfo.sh --use nvidia ",
+        "return-type": "json",
+        "format": "{}",
+        "rotate": 0,
+        "interval": 5, // once every 5 seconds
+        "tooltip": true,
+        "max-length": 1000,
+    },
+
+    "custom/gpuinfo#amd": {
+        "exec": " /home/kontact/.config/hyprdots/scripts/gpuinfo.sh --use amd ",
+        "return-type": "json",
+        "format": "{}",
+        "rotate": 0,
+        "interval": 5, // once every 5 seconds
+        "tooltip": true,
+        "max-length": 1000,
+    },
+
+    "custom/gpuinfo#intel": {
+        "exec": " /home/kontact/.config/hyprdots/scripts/gpuinfo.sh --use intel ",
+        "return-type": "json",
+        "format": "{}",
+        "rotate": 0,
+        "interval": 5, // once every 5 seconds
+        "tooltip": true,
+        "max-length": 1000,
     },
 
     "network": {
@@ -153,7 +197,7 @@
     },
 
     "tray": {
-        "icon-size": 17,
+        "icon-size": 16,
         "rotate": 0,
         "spacing": 5
     },
