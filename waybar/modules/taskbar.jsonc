@@ -1,6 +1,6 @@
 	"wlr/taskbar": {
 		"format": "{icon}",
-		"rotate": ${r_deg},
+		"rotate": 0,
 		"icon-size": ${i_task},
 		"icon-theme": "${i_theme}",
         "spacing": 0,

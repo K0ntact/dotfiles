@@ -4,9 +4,9 @@
             "h": 60, // high
             "m": 30, // medium
         },
-        "interval": 30,
+        "interval": 5,
         "format": "󰾆 {used}GB",
-        "rotate": ${r_deg},
+        "rotate": 0,
         "format-m": "󰾅 {used}GB",
         "format-h": "󰓅 {used}GB",
         "format-c": " {used}GB",

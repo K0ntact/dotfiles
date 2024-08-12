@@ -1,6 +1,6 @@
     "tray": {
         "icon-size": ${i_size},
-        "rotate": ${r_deg},
+        "rotate": 0,
         "spacing": 5
     },
 

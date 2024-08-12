@@ -1,6 +1,6 @@
     "idle_inhibitor": {
         "format": "{icon}",
-        "rotate": ${r_deg},
+        "rotate": 0,
         "format-icons": {
             "activated": "󰥔",
             "deactivated": ""
